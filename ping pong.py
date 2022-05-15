@@ -20,7 +20,13 @@ FPS = 60
 
 
 
-
+class Player(GameSprite):
+    def apdate(self):
+        keys_pressed = key.get_pressed()
+        if keys_pressed[K_w]:
+            self.rect.y += 10
+        if keys_pressed[K_s]:
+            self.rect.y -= 10
 
 lost = 0
 toto = 0
@@ -33,16 +39,18 @@ class Enemy(GameSprite):
             self.rect.x = randint(0, 600)
             self.speed = randint(1, 3)
             lost = lost + 1
-#hero = Player('rocket.png', 200, 400, 1, 60, 60)
+hero = Player('rrr.jpg', 0, 0, 1, 60, 60)
 
-#hero.apdate()
-#hero.reset()
 
 game = True
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+
+    hero.apdate()
+    hero.reset()
+
                 
 
 
